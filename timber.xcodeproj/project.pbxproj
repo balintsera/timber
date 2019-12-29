@@ -276,6 +276,7 @@
 		2BCA647B23B8AC3C00FD9AF4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 23T9QZNTFN;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -288,6 +289,7 @@
 		2BCA647C23B8AC3C00FD9AF4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 23T9QZNTFN;
 				ENABLE_HARDENED_RUNTIME = YES;
