@@ -13,6 +13,9 @@
 		2BCA647323B8AC3C00FD9AF4 /* nice_music.ogg in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647223B8AC3C00FD9AF4 /* nice_music.ogg */; };
 		2BCA647523B8AC3C00FD9AF4 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647423B8AC3C00FD9AF4 /* sansation.ttf */; };
 		2BCA647723B8AC3C00FD9AF4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647623B8AC3C00FD9AF4 /* icon.png */; };
+		2BCA647E23B8ADF500FD9AF4 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647D23B8ADF500FD9AF4 /* fonts */; };
+		2BCA648023B8AE0800FD9AF4 /* graphics in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647F23B8AE0800FD9AF4 /* graphics */; };
+		2BCA648423B8AEBD00FD9AF4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA648323B8AEBD00FD9AF4 /* sound */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +28,9 @@
 		2BCA647223B8AC3C00FD9AF4 /* nice_music.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; name = nice_music.ogg; path = ../nice_music.ogg; sourceTree = "<group>"; };
 		2BCA647423B8AC3C00FD9AF4 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sansation.ttf; path = ../sansation.ttf; sourceTree = "<group>"; };
 		2BCA647623B8AC3C00FD9AF4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		2BCA647D23B8ADF500FD9AF4 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../../../Downloads/9781838648572_Code/Chapter01/fonts; sourceTree = "<group>"; };
+		2BCA647F23B8AE0800FD9AF4 /* graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = graphics; sourceTree = "<group>"; };
+		2BCA648323B8AEBD00FD9AF4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 				2BCA646A23B8AC3C00FD9AF4 /* ResourcePath.mm */,
 				2BCA646C23B8AC3C00FD9AF4 /* ResourcePath.hpp */,
 				2BCA646D23B8AC3C00FD9AF4 /* main.cpp */,
+				2BCA648323B8AEBD00FD9AF4 /* sound */,
+				2BCA647F23B8AE0800FD9AF4 /* graphics */,
+				2BCA647D23B8ADF500FD9AF4 /* fonts */,
 				2BCA646F23B8AC3C00FD9AF4 /* Resources */,
 				2BCA646823B8AC3C00FD9AF4 /* Supporting Files */,
 			);
@@ -144,9 +153,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BCA647723B8AC3C00FD9AF4 /* icon.png in Resources */,
+				2BCA647E23B8ADF500FD9AF4 /* fonts in Resources */,
 				2BCA647523B8AC3C00FD9AF4 /* sansation.ttf in Resources */,
 				2BCA647323B8AC3C00FD9AF4 /* nice_music.ogg in Resources */,
 				2BCA647123B8AC3C00FD9AF4 /* cute_image.jpg in Resources */,
+				2BCA648023B8AE0800FD9AF4 /* graphics in Resources */,
+				2BCA648423B8AEBD00FD9AF4 /* sound in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
