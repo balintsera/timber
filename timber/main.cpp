@@ -33,10 +33,20 @@ int main(int, char const**)
     spriteBackround.setPosition(0, 0);
     
     while (window.isOpen()) {
-        // Handle players input
-        if (Keyboard::isKeyPressed(Keyboard::Escape)) {
-            window.close();
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // Close window: exit
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+
+            // Escape pressed: exit
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+                window.close();
+            }
         }
+
         
         // update the scene
         // create a texture to hold a graphic on the GPU
