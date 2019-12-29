@@ -52,23 +52,40 @@ public:
     }
 };
 
+class Drawings : public vector<Sprite> {
+public:
+    void draw(RenderWindow &window) {
+        for (auto d = this->begin(); d != this->end(); ++d) {
+            window.draw(*d);
+        }
+    }
+private:
+    RenderWindow window;
+};
+
 int main(int, char const**)
 {
     // add everything to be drawn to this vector
-    vector<Sprite> drawings;
-    
+    //vector<Sprite> drawings;
+   
     //OutVideoModes();
     VideoMode vm(WINDOW_WIDTH, WINDOW_HEIGHT);
     RenderWindow window(vm, "Timber!!");
+    Drawings drawings;
     
     GameObject bg("background.png");
     drawings.push_back(bg.sprites[0]);
     
-    // create a tree sprite
+    GameObject cloud("cloud.png", 20, 100);
+    cloud.addSprite(400, 100);
+    cloud.addSprite(800, 100);
+    for (auto sp = cloud.sprites.begin(); sp != cloud.sprites.end(); ++sp) {
+        drawings.push_back(*sp);
+    }
+    
     // position to the center horizontally
     GameObject tree("tree.png");
     int x = (WINDOW_WIDTH/2) - ((tree.sprites[0].getLocalBounds().width)/2);
-    cout << "tree witdth: " << x;
     tree.rePositionAt(0, x);
     drawings.push_back(tree.sprites[0]);
     
@@ -77,13 +94,7 @@ int main(int, char const**)
     bool beeSpeed = 0.0f;
     drawings.push_back(bee.sprites[0]);
     
-    
-    GameObject cloud("cloud.png", 20, 100);
-    cloud.addSprite(100, 100);
-    cloud.addSprite(200, 100);
-    for (auto sp = cloud.sprites.begin(); sp != cloud.sprites.end(); ++sp) {
-        drawings.push_back(*sp);
-    }
+
     
     while (window.isOpen()) {
         sf::Event event;
@@ -104,10 +115,7 @@ int main(int, char const**)
         // clear everything from the last frame
         window.clear();
         
-        // draw all drawings
-        for (auto d = drawings.begin(); d != drawings.end(); ++d) {
-            window.draw(*d);
-        }
+        drawings.draw(window);
         
         window.display();
         
