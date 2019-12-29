@@ -54,7 +54,7 @@ public:
         if (num >= sprites.size()) {
             return;
         }
-        cout << "reposition" << x << " " << y << "\n";
+        //cout << "reposition" << x << " " << y << "\n";
         sprites[num].setPosition(x, y);
     }
     
@@ -65,45 +65,25 @@ public:
     }
 };
 
-class Drawings : public vector<Sprite> {
-public:
-    void draw(RenderWindow &window) {
-        for (auto d = this->begin(); d != this->end(); ++d) {
-            window.draw(*d);
-        }
-    }
-private:
-    RenderWindow window;
-};
-
 int main(int, char const**)
 {
-    // add everything to be drawn to this vector
-    //vector<Sprite> drawings;
-   
     //OutVideoModes();
     VideoMode vm(WINDOW_WIDTH, WINDOW_HEIGHT);
     RenderWindow window(vm, "Timber!!");
-    Drawings drawings;
     
     GameObject bg("background.png");
-    drawings.push_back(bg.sprites[0]);
-    
+
     GameObject cloud("cloud.png");
     cloud.addSprite(0, 250);
     cloud.addSprite(0, 500);
-    for (auto sp = cloud.sprites.begin(); sp != cloud.sprites.end(); ++sp) {
-        drawings.push_back(*sp);
-    }
+    
     
     // position to the center horizontally
     GameObject tree("tree.png");
     int x = (WINDOW_WIDTH/2) - ((tree.sprites[0].getLocalBounds().width)/2);
     tree.rePositionAt(0, x);
-    drawings.push_back(tree.sprites[0]);
     
     GameObject bee("bee.png", 1000, 800);
-    drawings.push_back(bee.sprites[0]);
     
     Clock clock;
     
@@ -135,7 +115,7 @@ int main(int, char const**)
             float x =  bee.sprites[0].getPosition().x - (bee.sprites[0].speed * dt.asSeconds());
             float y = bee.sprites[0].getPosition().y;
             bee.rePositionAt(0, x, y);
-            cout << "new pos: " << x << " " << y << "\n";
+            //cout << "new pos: " << x << " " << y << "\n";
             // if it reached the left-hand edge
             if (bee.sprites[0].getPosition().x < -100) {
                  bee.sprites[0].active = false;
