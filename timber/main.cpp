@@ -18,17 +18,23 @@ using namespace std;
 // forward declaration
 void OutVideoModes();
 
+class MovingSprite : public Sprite {
+public:
+    bool active = false;
+    double speed = 0.0f;
+};
+
 class GameObject {
 private:
     string graphicsPath = resourcePath() + "graphics/";
     string path;
-    int x;
-    int y;
     Texture texture;
 public:
-    vector<Sprite> sprites;
+    bool active;
+    double speed;
+    vector<MovingSprite> sprites;
     
-    GameObject(string path, int x = 0, int y = 0) {
+    GameObject(string path, float x = 0, float y = 0) {
         path = path;
         if (!texture.loadFromFile(graphicsPath + path)) {
             throw EXIT_FILE_NOT_FOUND_ERROR;
@@ -37,18 +43,25 @@ public:
         addSprite(x, y);
     }
     
-    void addSprite(int x = 0, int y = 0) {
-        Sprite sp;
+    void addSprite(float x = 0, float y = 0) {
+        MovingSprite sp;
         sp.setTexture(texture);
         sp.setPosition(x, y);
         sprites.push_back(sp);
     }
     
-    void rePositionAt(int num = 0, int x = 0, int y = 0) {
+    void rePositionAt(int num = 0, float x = 0, float y = 0) {
         if (num >= sprites.size()) {
             return;
         }
+        cout << "reposition" << x << " " << y << "\n";
         sprites[num].setPosition(x, y);
+    }
+    
+    void draw(RenderWindow &win) {
+        for (auto d = sprites.begin(); d != sprites.end(); ++d) {
+            win.draw(*d);
+        }
     }
 };
 
@@ -76,9 +89,9 @@ int main(int, char const**)
     GameObject bg("background.png");
     drawings.push_back(bg.sprites[0]);
     
-    GameObject cloud("cloud.png", 20, 100);
-    cloud.addSprite(400, 100);
-    cloud.addSprite(800, 100);
+    GameObject cloud("cloud.png");
+    cloud.addSprite(0, 250);
+    cloud.addSprite(0, 500);
     for (auto sp = cloud.sprites.begin(); sp != cloud.sprites.end(); ++sp) {
         drawings.push_back(*sp);
     }
@@ -89,12 +102,10 @@ int main(int, char const**)
     tree.rePositionAt(0, x);
     drawings.push_back(tree.sprites[0]);
     
-    GameObject bee("bee.png", 440, 600);
-    bool beeActive = false;
-    bool beeSpeed = 0.0f;
+    GameObject bee("bee.png", 1000, 800);
     drawings.push_back(bee.sprites[0]);
     
-
+    Clock clock;
     
     while (window.isOpen()) {
         sf::Event event;
@@ -111,11 +122,35 @@ int main(int, char const**)
             }
         }
 
+        Time dt = clock.restart();
+        if (!bee.sprites[0].active) {
+            srand((int)time(0));
+            bee.sprites[0].speed = (rand() % 200) + 200;
+            srand((int)time(0) * 10);
+            float height = (rand() % 500) + 500;
+            bee.rePositionAt(0, bee.sprites[0].getPosition().x, height);
+            bee.sprites[0].active = true;
+        } else {
+            // move the bee
+            float x =  bee.sprites[0].getPosition().x - (bee.sprites[0].speed * dt.asSeconds());
+            float y = bee.sprites[0].getPosition().y;
+            bee.rePositionAt(0, x, y);
+            cout << "new pos: " << x << " " << y << "\n";
+            // if it reached the left-hand edge
+            if (bee.sprites[0].getPosition().x < -100) {
+                 bee.sprites[0].active = false;
+            }
+           
+        }
+        
         
         // clear everything from the last frame
         window.clear();
         
-        drawings.draw(window);
+        bg.draw(window);
+        tree.draw(window);
+        cloud.draw(window);
+        bee.draw(window);
         
         window.display();
         
