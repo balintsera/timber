@@ -108,7 +108,9 @@ int main(int, char const**)
             bee.sprites[0].speed = (rand() % 200) + 200;
             srand((int)time(0) * 10);
             float height = (rand() % 500) + 500;
-            bee.rePositionAt(0, bee.sprites[0].getPosition().x, height);
+            bee.rePositionAt(0, 1000, height);
+            cout << "new rand pos: " << bee.sprites[0].getPosition().x << " " << height << "\n";
+
             bee.sprites[0].active = true;
         } else {
             // move the bee
@@ -118,6 +120,8 @@ int main(int, char const**)
             //cout << "new pos: " << x << " " << y << "\n";
             // if it reached the left-hand edge
             if (bee.sprites[0].getPosition().x < -100) {
+                cout << "new pos less then -100: " << x << " " << y << "\n";
+
                  bee.sprites[0].active = false;
             }
            
