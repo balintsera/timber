@@ -16,6 +16,7 @@
 		2BCA647E23B8ADF500FD9AF4 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647D23B8ADF500FD9AF4 /* fonts */; };
 		2BCA648023B8AE0800FD9AF4 /* graphics in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA647F23B8AE0800FD9AF4 /* graphics */; };
 		2BCA648423B8AEBD00FD9AF4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA648323B8AEBD00FD9AF4 /* sound */; };
+		2BCA648823BA3D2B00FD9AF4 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		2BCA647D23B8ADF500FD9AF4 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fonts; path = ../../../../Downloads/9781838648572_Code/Chapter01/fonts; sourceTree = "<group>"; };
 		2BCA647F23B8AE0800FD9AF4 /* graphics */ = {isa = PBXFileReference; lastKnownFileType = folder; path = graphics; sourceTree = "<group>"; };
 		2BCA648323B8AEBD00FD9AF4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
+		2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				2BCA646A23B8AC3C00FD9AF4 /* ResourcePath.mm */,
 				2BCA646C23B8AC3C00FD9AF4 /* ResourcePath.hpp */,
 				2BCA646D23B8AC3C00FD9AF4 /* main.cpp */,
+				2BCA648523BA3D1500FD9AF4 /* model */,
 				2BCA648323B8AEBD00FD9AF4 /* sound */,
 				2BCA647F23B8AE0800FD9AF4 /* graphics */,
 				2BCA647D23B8ADF500FD9AF4 /* fonts */,
@@ -92,6 +95,14 @@
 				2BCA647623B8AC3C00FD9AF4 /* icon.png */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2BCA648523BA3D1500FD9AF4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,6 +202,7 @@
 			files = (
 				2BCA646E23B8AC3C00FD9AF4 /* main.cpp in Sources */,
 				2BCA646B23B8AC3C00FD9AF4 /* ResourcePath.mm in Sources */,
+				2BCA648823BA3D2B00FD9AF4 /* GameObject.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

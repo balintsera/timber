@@ -1,5 +1,4 @@
 const int EXIT_SUCCESS=0;
-const int EXIT_FILE_NOT_FOUND_ERROR = 1;
 const int WINDOW_WIDTH=1600;
 const int WINDOW_HEIGHT=1200;
 
@@ -10,6 +9,8 @@ const int WINDOW_HEIGHT=1200;
 
 #include "ResourcePath.hpp"
 
+#include "model/GameObject.cpp"
+
 using namespace sf;
 using namespace std;
 
@@ -17,53 +18,6 @@ using namespace std;
 
 // forward declaration
 void OutVideoModes();
-
-class MovingSprite : public Sprite {
-public:
-    bool active = false;
-    double speed = 0.0f;
-};
-
-class GameObject {
-private:
-    string graphicsPath = resourcePath() + "graphics/";
-    string path;
-    Texture texture;
-public:
-    bool active;
-    double speed;
-    vector<MovingSprite> sprites;
-    
-    GameObject(string path, float x = 0, float y = 0) {
-        path = path;
-        if (!texture.loadFromFile(graphicsPath + path)) {
-            throw EXIT_FILE_NOT_FOUND_ERROR;
-        }
-        
-        addSprite(x, y);
-    }
-    
-    void addSprite(float x = 0, float y = 0) {
-        MovingSprite sp;
-        sp.setTexture(texture);
-        sp.setPosition(x, y);
-        sprites.push_back(sp);
-    }
-    
-    void rePositionAt(int num = 0, float x = 0, float y = 0) {
-        if (num >= sprites.size()) {
-            return;
-        }
-        //cout << "reposition" << x << " " << y << "\n";
-        sprites[num].setPosition(x, y);
-    }
-    
-    void draw(RenderWindow &win) {
-        for (auto d = sprites.begin(); d != sprites.end(); ++d) {
-            win.draw(*d);
-        }
-    }
-};
 
 int main(int, char const**)
 {
@@ -73,9 +27,9 @@ int main(int, char const**)
     
     GameObject bg("background.png");
 
-    GameObject cloud("cloud.png");
-    cloud.addSprite(0, 250);
-    cloud.addSprite(0, 500);
+    GameObject cloud("cloud.png", 0, 0, false);
+    cloud.addSprite(0, 250, false);
+    cloud.addSprite(0, 500, false);
     
     
     // position to the center horizontally
@@ -83,7 +37,7 @@ int main(int, char const**)
     int x = (WINDOW_WIDTH/2) - ((tree.sprites[0].getLocalBounds().width)/2);
     tree.rePositionAt(0, x);
     
-    GameObject bee("bee.png", 1000, 800);
+    GameObject bee("bee.png", 1000, 800, true);
     
     Clock clock;
     
@@ -103,37 +57,34 @@ int main(int, char const**)
         }
 
         Time dt = clock.restart();
-        if (!bee.sprites[0].active) {
-            srand((int)time(0));
-            bee.sprites[0].speed = (rand() % 200) + 200;
-            srand((int)time(0) * 10);
-            float height = (rand() % 500) + 500;
-            bee.rePositionAt(0, 1000, height);
-            cout << "new rand pos: " << bee.sprites[0].getPosition().x << " " << height << "\n";
-
-            bee.sprites[0].active = true;
-        } else {
-            // move the bee
-            float x =  bee.sprites[0].getPosition().x - (bee.sprites[0].speed * dt.asSeconds());
-            float y = bee.sprites[0].getPosition().y;
-            bee.rePositionAt(0, x, y);
-            //cout << "new pos: " << x << " " << y << "\n";
-            // if it reached the left-hand edge
-            if (bee.sprites[0].getPosition().x < -100) {
-                cout << "new pos less then -100: " << x << " " << y << "\n";
-
-                 bee.sprites[0].active = false;
-            }
-           
-        }
+        RandBounds hBounds;
+        hBounds.min = 200;
+        hBounds.max = 200;
+        RandBounds sBounds;
+        sBounds.min = 500;
+        sBounds.max = 500;
+        bee.animateAt(0, dt, hBounds, sBounds, 1920);
         
+        hBounds.max = 0;
+        sBounds.min = 150;
+        sBounds.max = 0;
+        cloud.animateAt(0, dt, hBounds, sBounds, -200, 1920);
+        
+        sBounds.min = 80;
+        cloud.animateAt(1, dt, hBounds, sBounds, 200, 1920);
+        
+        hBounds.min = 300;
+        hBounds.max = 40;
+        sBounds.min = 110;
+        sBounds.max = 10;
+        cloud.animateAt(2, dt, hBounds, sBounds, -200, 1920);
         
         // clear everything from the last frame
         window.clear();
         
         bg.draw(window);
-        tree.draw(window);
         cloud.draw(window);
+        tree.draw(window);
         bee.draw(window);
         
         window.display();
