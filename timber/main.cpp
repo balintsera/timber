@@ -11,6 +11,7 @@ const int WINDOW_HEIGHT=1200;
 
 #include "model/GameObject.cpp"
 #include "model/HUD.cpp"
+#include "model/TimeBar.cpp"
 
 using namespace sf;
 using namespace std;
@@ -41,7 +42,7 @@ int main(int, char const**)
     GameObject bee("bee.png", 1000, 800, true);
     
     HUD hud;
-    
+    TimeBar timeBar(WINDOW_WIDTH, 6.0f);
     Clock clock;
     bool paused = true;
     while (window.isOpen()) {
@@ -59,14 +60,14 @@ int main(int, char const**)
             }
             
             if (event.type == Event::KeyPressed && event.key.code == Keyboard::Return) {
-                paused = !paused;
+                paused = false;
+                hud.score = 0;
+                timeBar.timeRemaining = 6;
             }
         }
 
         Time dt = clock.restart();
-        
-        
-        
+                
         if (!paused) {
             RandBounds hBounds;
             hBounds.min = 200;
@@ -89,9 +90,12 @@ int main(int, char const**)
             sBounds.min = 110;
             sBounds.max = 10;
             cloud.animateAt(2, dt, hBounds, sBounds, -200, 1920);
+            
+            timeBar.timeRemaining -= dt.asSeconds();
+            timeBar.updateSize();
         }
-        hud.updateScoreDisplay();
         
+        hud.updateScoreDisplay();
         // clear everything from the last frame
         window.clear();
         
@@ -105,6 +109,8 @@ int main(int, char const**)
         if (paused) {
             window.draw(hud.messageText);
         }
+        
+        window.draw(timeBar.timeBar);
         
         window.display();
         

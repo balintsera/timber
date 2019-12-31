@@ -18,6 +18,7 @@
 		2BCA648423B8AEBD00FD9AF4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 2BCA648323B8AEBD00FD9AF4 /* sound */; };
 		2BCA648823BA3D2B00FD9AF4 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */; };
 		2BCA648E23BA711800FD9AF4 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648C23BA711800FD9AF4 /* HUD.cpp */; };
+		2BCA649023BB48A300FD9AF4 /* TimeBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648F23BB48A300FD9AF4 /* TimeBar.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		2BCA648C23BA711800FD9AF4 /* HUD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
 		2BCA648D23BA711800FD9AF4 /* HUD.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HUD.hpp; sourceTree = "<group>"; };
+		2BCA648F23BB48A300FD9AF4 /* TimeBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TimeBar.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */,
 				2BCA648C23BA711800FD9AF4 /* HUD.cpp */,
 				2BCA648D23BA711800FD9AF4 /* HUD.hpp */,
+				2BCA648F23BB48A300FD9AF4 /* TimeBar.cpp */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			files = (
 				2BCA646E23B8AC3C00FD9AF4 /* main.cpp in Sources */,
 				2BCA648E23BA711800FD9AF4 /* HUD.cpp in Sources */,
+				2BCA649023BB48A300FD9AF4 /* TimeBar.cpp in Sources */,
 				2BCA646B23B8AC3C00FD9AF4 /* ResourcePath.mm in Sources */,
 				2BCA648823BA3D2B00FD9AF4 /* GameObject.cpp in Sources */,
 			);
