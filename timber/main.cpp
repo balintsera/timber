@@ -10,6 +10,7 @@ const int WINDOW_HEIGHT=1200;
 #include "ResourcePath.hpp"
 
 #include "model/GameObject.cpp"
+#include "model/HUD.cpp"
 
 using namespace sf;
 using namespace std;
@@ -39,8 +40,10 @@ int main(int, char const**)
     
     GameObject bee("bee.png", 1000, 800, true);
     
-    Clock clock;
+    HUD hud;
     
+    Clock clock;
+    bool paused = true;
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event))
@@ -51,34 +54,42 @@ int main(int, char const**)
             }
 
             // Escape pressed: exit
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape) {
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Escape) {
                 window.close();
+            }
+            
+            if (event.type == Event::KeyPressed && event.key.code == Keyboard::Return) {
+                paused = !paused;
             }
         }
 
         Time dt = clock.restart();
-        RandBounds hBounds;
-        hBounds.min = 200;
-        hBounds.max = 200;
-        RandBounds sBounds;
-        sBounds.min = 500;
-        sBounds.max = 500;
-        bee.animateAt(0, dt, hBounds, sBounds, 1920);
         
-        hBounds.max = 0;
-        sBounds.min = 150;
-        sBounds.max = 0;
-        cloud.animateAt(0, dt, hBounds, sBounds, -200, 1920);
         
-        sBounds.min = 80;
-        cloud.animateAt(1, dt, hBounds, sBounds, 200, 1920);
         
-        hBounds.min = 300;
-        hBounds.max = 40;
-        sBounds.min = 110;
-        sBounds.max = 10;
-        cloud.animateAt(2, dt, hBounds, sBounds, -200, 1920);
-        
+        if (!paused) {
+            RandBounds hBounds;
+            hBounds.min = 200;
+            hBounds.max = 200;
+            RandBounds sBounds;
+            sBounds.min = 500;
+            sBounds.max = 500;
+            bee.animateAt(0, dt, hBounds, sBounds, 1920);
+            
+            hBounds.max = 0;
+            sBounds.min = 150;
+            sBounds.max = 0;
+            cloud.animateAt(0, dt, hBounds, sBounds, -200, 1920);
+            
+            sBounds.min = 80;
+            cloud.animateAt(1, dt, hBounds, sBounds, 200, 1920);
+            
+            hBounds.min = 300;
+            hBounds.max = 40;
+            sBounds.min = 110;
+            sBounds.max = 10;
+            cloud.animateAt(2, dt, hBounds, sBounds, -200, 1920);
+        }
         // clear everything from the last frame
         window.clear();
         
@@ -86,6 +97,8 @@ int main(int, char const**)
         cloud.draw(window);
         tree.draw(window);
         bee.draw(window);
+        
+        hud.draw(window);
         
         window.display();
         
