@@ -29,7 +29,7 @@ public:
         font.loadFromFile(fontsPath + "KOMIKAP_.ttf");
         
         messageText.setString("Press Enter to start");
-        styleText(messageText, 75, Color::White);
+        styleText(messageText, 60, Color::White);
         
         updateScoreDisplay();
         styleText(scoreText, 100, Color::Red);
@@ -53,7 +53,7 @@ private:
     void positionText() {
         FloatRect textRect = messageText.getLocalBounds();
         messageText.getLocalBounds();
-        double yOffset = 70;
+        double yOffset = 100;
         double x = textRect.left + textRect.width / 2.0f;
         double y = (textRect.top + textRect.height / 2.0f) + yOffset;
         messageText.setPosition(x, y);

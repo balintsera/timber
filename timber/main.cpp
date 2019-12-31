@@ -90,6 +90,8 @@ int main(int, char const**)
             sBounds.max = 10;
             cloud.animateAt(2, dt, hBounds, sBounds, -200, 1920);
         }
+        hud.updateScoreDisplay();
+        
         // clear everything from the last frame
         window.clear();
         
@@ -98,7 +100,11 @@ int main(int, char const**)
         tree.draw(window);
         bee.draw(window);
         
-        hud.draw(window);
+        window.draw(hud.scoreText);
+        
+        if (paused) {
+            window.draw(hud.messageText);
+        }
         
         window.display();
         
