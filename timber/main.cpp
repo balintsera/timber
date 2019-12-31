@@ -92,6 +92,11 @@ int main(int, char const**)
             cloud.animateAt(2, dt, hBounds, sBounds, -200, 1920);
             
             timeBar.timeRemaining -= dt.asSeconds();
+            if (timeBar.timeRemaining < 0) {
+                paused = true;
+                hud.messageText.setString("Out of time! Hit enter to restart");
+                hud.positionText();
+            }
             timeBar.updateSize();
         }
         
