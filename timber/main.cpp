@@ -45,8 +45,7 @@ int main(int, char const**)
     BranchManager branchManager;
     branchManager.generate();
     branchManager.move();
-    branchManager.move();
-    branchManager.move();
+  
     
     HUD hud;
     TimeBar timeBar(WINDOW_WIDTH, 6.0f);

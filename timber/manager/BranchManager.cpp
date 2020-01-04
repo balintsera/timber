@@ -21,27 +21,27 @@ void BranchManager::generate() {
     for (int i = 0; i < numBranches - 1; i++) {
         go.addSprite(-2000, -2000);
         // how to set origin
-        go.sprites[i].setOrigin(220, 20);
+        //go.sprites[i].setOrigin(220, 20);
     }
 }
 
 void BranchManager::update() {
     int i = 0;
     for (auto d = go.sprites.begin(); d != go.sprites.end(); ++d) {
-        float height = i * 150;
+        float height = i * 90;
         if (Positions[i] == side::LEFT) {
             // Move to the left side
-            d->setPosition(610, height);
+            d->setPosition(660, height);
             // Flip the sprite round the other way
             d->setRotation(180);
         } else if (Positions[i] == side::RIGHT) {
             // Move the sprite to the right
-            d->setPosition(1330, height);
+            d->setPosition(940, height);
             // set the rotation
             d->setRotation(0);
         } else {
             // hide the branch
-            d->setPosition(3000, height);
+            d->setPosition(-3000, height);
         }
         i++;
     }
