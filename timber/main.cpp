@@ -43,6 +43,7 @@ int main(int, char const**)
     GameObject bee("bee.png", 1000, 800, true);
     
     BranchManager branchManager;
+    branchManager.generate();
     
     HUD hud;
     TimeBar timeBar(WINDOW_WIDTH, 6.0f);
@@ -101,6 +102,7 @@ int main(int, char const**)
                 hud.positionText();
             }
             timeBar.updateSize();
+            branchManager.update();
         }
         
         hud.updateScoreDisplay();
@@ -111,6 +113,7 @@ int main(int, char const**)
         cloud.draw(window);
         tree.draw(window);
         bee.draw(window);
+        branchManager.go.draw(window);
         
         window.draw(hud.scoreText);
         
