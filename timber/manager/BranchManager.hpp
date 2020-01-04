@@ -22,7 +22,8 @@ public:
     
     BranchManager(int branchNum = 6);
     void generate();
-    void update();    
+    void update();
+    void move();
     
 private:
     enum class side { LEFT, RIGHT, NONE };

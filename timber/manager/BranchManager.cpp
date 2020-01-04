@@ -47,3 +47,22 @@ void BranchManager::update() {
     }
 }
 
+void BranchManager::move() {
+    for (int j = numBranches-1; j > 0; j--) {
+        Positions[j] = Positions[j-1];
+    }
+    
+    // Spawn a new branch at position 0
+    srand((int)time(0));
+    int r = (rand() % 5);
+    switch(r) {
+        case 0:
+            Positions[0] = side::LEFT;
+            break;
+        case 1:
+            Positions[0] = side::RIGHT;
+        default:
+            Positions[0] = side::NONE;
+    }
+}
+
