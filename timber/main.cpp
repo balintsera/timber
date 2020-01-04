@@ -9,9 +9,10 @@ const int WINDOW_HEIGHT=1200;
 
 #include "ResourcePath.hpp"
 
-#include "model/GameObject.cpp"
+#include "model/GameObject.hpp"
 #include "model/HUD.cpp"
 #include "model/TimeBar.cpp"
+#include "BranchManager.hpp"
 
 using namespace sf;
 using namespace std;
@@ -40,6 +41,8 @@ int main(int, char const**)
     tree.rePositionAt(0, x);
     
     GameObject bee("bee.png", 1000, 800, true);
+    
+    BranchManager branchManager;
     
     HUD hud;
     TimeBar timeBar(WINDOW_WIDTH, 6.0f);

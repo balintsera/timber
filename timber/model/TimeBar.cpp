@@ -47,7 +47,8 @@ private:
     void initGraphicObject() {
         updateSize();
         timeBar.setFillColor(Color::Red);
-        timeBar.setPosition(((windWidth/2) - timeBarStartWidth) / 2, 980);
+        timeBar.setOrigin(((windWidth/2) - timeBarStartWidth) / 2, 0);
+        timeBar.setPosition(1600/2.0f, 1100);
     }
     
     float getTimeBarWidthPerSecond() {

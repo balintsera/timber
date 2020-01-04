@@ -19,6 +19,7 @@
 		2BCA648823BA3D2B00FD9AF4 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */; };
 		2BCA648E23BA711800FD9AF4 /* HUD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648C23BA711800FD9AF4 /* HUD.cpp */; };
 		2BCA649023BB48A300FD9AF4 /* TimeBar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA648F23BB48A300FD9AF4 /* TimeBar.cpp */; };
+		2BCA649423BCF4B600FD9AF4 /* BranchManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BCA649223BCF4B500FD9AF4 /* BranchManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,9 @@
 		2BCA648C23BA711800FD9AF4 /* HUD.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = HUD.cpp; sourceTree = "<group>"; };
 		2BCA648D23BA711800FD9AF4 /* HUD.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = HUD.hpp; sourceTree = "<group>"; };
 		2BCA648F23BB48A300FD9AF4 /* TimeBar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TimeBar.cpp; sourceTree = "<group>"; };
+		2BCA649223BCF4B500FD9AF4 /* BranchManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BranchManager.cpp; sourceTree = "<group>"; };
+		2BCA649323BCF4B600FD9AF4 /* BranchManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BranchManager.hpp; sourceTree = "<group>"; };
+		2BCD7D9E23C0CD5E00C990C7 /* GameObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 				2BCA646A23B8AC3C00FD9AF4 /* ResourcePath.mm */,
 				2BCA646C23B8AC3C00FD9AF4 /* ResourcePath.hpp */,
 				2BCA646D23B8AC3C00FD9AF4 /* main.cpp */,
+				2BCA649123BCF49E00FD9AF4 /* manager */,
 				2BCA648523BA3D1500FD9AF4 /* model */,
 				2BCA648323B8AEBD00FD9AF4 /* sound */,
 				2BCA647F23B8AE0800FD9AF4 /* graphics */,
@@ -105,12 +110,22 @@
 		2BCA648523BA3D1500FD9AF4 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				2BCD7D9E23C0CD5E00C990C7 /* GameObject.hpp */,
 				2BCA648623BA3D2B00FD9AF4 /* GameObject.cpp */,
 				2BCA648C23BA711800FD9AF4 /* HUD.cpp */,
 				2BCA648D23BA711800FD9AF4 /* HUD.hpp */,
 				2BCA648F23BB48A300FD9AF4 /* TimeBar.cpp */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		2BCA649123BCF49E00FD9AF4 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				2BCA649223BCF4B500FD9AF4 /* BranchManager.cpp */,
+				2BCA649323BCF4B600FD9AF4 /* BranchManager.hpp */,
+			);
+			path = manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +226,7 @@
 				2BCA646E23B8AC3C00FD9AF4 /* main.cpp in Sources */,
 				2BCA648E23BA711800FD9AF4 /* HUD.cpp in Sources */,
 				2BCA649023BB48A300FD9AF4 /* TimeBar.cpp in Sources */,
+				2BCA649423BCF4B600FD9AF4 /* BranchManager.cpp in Sources */,
 				2BCA646B23B8AC3C00FD9AF4 /* ResourcePath.mm in Sources */,
 				2BCA648823BA3D2B00FD9AF4 /* GameObject.cpp in Sources */,
 			);
